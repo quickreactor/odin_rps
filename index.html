@@ -56,12 +56,12 @@
                     (humanChoice === 'Paper' && computerChoice === 'Rock')
                 ) {
                     humanScore++
-                    return `You chose ${humanChoice}, Computer chose ${computerChoice}...
-Humans win! Suck it Robot scum! Current score Humans:${humanScore} Computer:${computerScore}`;
+                    return `You chose ${humanChoice}, Computer chose ${computerChoice}... 
+                    Humans win! Suck it Robot scum! Current score Humans:${humanScore} Computer:${computerScore}`.trim();
                 } else {
                     computerScore++
                     return `You chose ${humanChoice}, Computer chose ${computerChoice}...
-You are inferior to the cold hard silicon, Computers win! Current score Humans:${humanScore} Computer:${computerScore}`;
+                    You are inferior to the cold hard silicon, Computers win! Current score Humans:${humanScore} Computer:${computerScore}`.trim();
                 }
                 // else return "you lose"
             }
@@ -78,6 +78,8 @@ You are inferior to the cold hard silicon, Computers win! Current score Humans:$
                 humanScore === 5 ? console.log("You win!") : console.log("Sorry you lost!");
             }
         }
+
+        playGame();
 
 
     </script>
