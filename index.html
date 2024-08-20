@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let choices = ['Rock', 'Paper', 'Scissors']; // Make an array of the possible choices ['Rock', 'Paper', Scissors]
+        let quit = false;
+        let previousChoice = "";
+
+        const getComputerChoice = () => {
+            let random = Math.floor((Math.random() * 3)); // Generate a random number between 0 and 2 (1 and 3)
+            return choices[random]
+        }
+
+        const getHumanChoice = () => {
+            let humanChoice = prompt('Choose Rock Paper or Scissors', previousChoice); // prompt for choice 'Choose Rock Paper or Scissor'
+            if (humanChoice === null) {
+                const quitChoice = confirm('Do you want to quit?');
+                if (quitChoice) {
+                    quit = true;
+                    return 'quit'
+                } else {
+                    return getHumanChoice();
+                }
+            }
+            let validChoiceIndex = choices.map(e => e.toLowerCase()).indexOf(humanChoice.toLowerCase())
+            if (validChoiceIndex < 0) {
+                alert('Please enter one of "Rock", "Paper", or "Scissors"'); // if choice doesn't match any of the choices, alert and prompt again
+                return getHumanChoice();
+            } else { // it's valid
+                previousChoice = choices[validChoiceIndex];
+                return choices[validChoiceIndex] // if choice is valid return the choice
+            }
+        }
+
+
+
+        const playGame = () => {
+            let humanScore = 0;
+            let computerScore = 0;
+
+            const playRound = (humanChoice, computerChoice) => {
+                if (humanChoice === 'quit') { // you quit the game
+                    return "You quit!";
+                } else if (humanChoice === computerChoice) { // it's a draw
+                    return "It's a draw! Try again!";
+                } else if ( // If humanchoice beats computerchoice return "YOU WIN"
+                    (humanChoice === 'Rock' && computerChoice === 'Scissors') ||
+                    (humanChoice === 'Scissors' && computerChoice === 'Paper') ||
+                    (humanChoice === 'Paper' && computerChoice === 'Rock')
+                ) {
+                    humanScore++
+                    return `You chose ${humanChoice}, Computer chose ${computerChoice}...
+Humans win! Suck it Robot scum! Current score Humans:${humanScore} Computer:${computerScore}`;
+                } else {
+                    computerScore++
+                    return `You chose ${humanChoice}, Computer chose ${computerChoice}...
+You are inferior to the cold hard silicon, Computers win! Current score Humans:${humanScore} Computer:${computerScore}`;
+                }
+                // else return "you lose"
+            }
+
+
+            // GAME START CODE
+            
+            while (computerScore < 5 && humanScore < 5 && !quit) {
+                console.log( playRound(getHumanChoice(), getComputerChoice()) );
+                if (quit) break;
+            }
+
+            if (!quit) {
+                humanScore === 5 ? console.log("You win!") : console.log("Sorry you lost!");
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
