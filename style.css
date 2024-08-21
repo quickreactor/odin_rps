@@ -1,0 +1,29 @@
+body {
+    font-family: Roboto;
+}
+
+h1 {
+    text-align: center;
+}
+
+#option-container, #score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    font-size: 60px;
+    font-weight: 800;
+}
+
+#score-container {
+    font-size: 40px;
+}
+
+.option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    border-radius: 20px;
+    padding: 20px;
+}
